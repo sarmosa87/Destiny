@@ -1,0 +1,49 @@
+.profileContainer{
+
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid black;
+    border-radius: 20px;
+    margin: auto;
+    width: 500px;
+    height: 400px;
+    background: #e6e6e6;
+
+}
+
+
+.row {
+
+    flex-direction: row;
+
+  }
+
+
+.profileBox {
+
+
+  
+    display: flex;
+
+ 
+
+
+
+}
+
+.profileBox2{
+
+border-right: 1px solid black;
+
+
+
+}
+
+.profileBox3{
+
+
+
+
+}

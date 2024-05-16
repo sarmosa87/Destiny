@@ -1,0 +1,48 @@
+#header {
+    display: block;
+    text-align: center;
+    margin-top: 5px;
+    font-size: 50px;
+    text-decoration: none;
+    color: black;
+}
+
+.menu{
+
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    padding: 10px;
+    margin: 30px;
+    width: 1300px;
+    margin: auto;
+
+}
+
+
+.menu .nav-link {
+    color: black;         
+    text-decoration: none; 
+    margin: 20px;
+}
+
+.menu .nav-link:hover {
+    color: blue; /* 마우스 오버 시 텍스트 색상을 빨간색으로 변경 */
+    cursor: pointer; /* 마우스 포인터를 손가락 모양으로 변경 */
+    text-decoration: underline;
+
+}
+
+.topmenu {
+
+    display: flex;
+    justify-content: end;
+    margin: auto;
+    width: 1300px;
+    margin-top: 10px;
+
+}
+
+.detailMenu {
+
+
+}

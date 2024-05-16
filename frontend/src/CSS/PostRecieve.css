@@ -1,0 +1,205 @@
+.PostContainer{
+
+    border: 1px solid black;
+    border-radius: 10px;
+    position: absolute;
+    left: 60%;
+    top: 20%;
+    width: 500px;
+    height: 400px;
+
+}
+
+
+.PostContainer h1{
+
+
+    text-align: center;
+
+}
+
+.PostOption{
+
+    display: flex;
+    justify-content: center;
+
+
+
+}
+
+
+.PostContainer button {
+
+    width: 250px;
+    background-color: #ffffff;
+    color: #000000;
+    border: 2px solid #ccdff9;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s ease;
+
+  }  
+  
+  .PostContainer button:hover {
+    background-color: gray;
+    color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .PostContainerList{
+
+    margin: 20px;
+    
+
+  }
+
+  .PostContainerList{
+
+    display: flex;
+    height: 30px;
+    font-size: 13px;
+    width: 500px;
+    margin-left: 10px;
+    
+
+  }
+
+  .row {
+
+    flex-direction: row;
+
+  }
+
+  
+
+  .w1{
+
+    border: 2px solid #ccdff9;
+    flex-basis: 50px;
+    padding: 3px;
+    text-align: center;
+
+  }
+
+  .w2{
+    border: 2px solid #ccdff9;
+    flex-basis: 200px;
+    padding: 3px;
+    text-align: center;
+  }
+
+  .w3{
+    border: 2px solid #ccdff9;
+    flex-basis: 60px;
+    padding: 3px;
+    text-align: center;
+  }
+
+  .w4{
+    border: 2px solid #ccdff9;
+    flex-basis: 130px;
+    padding: 3px;
+    text-align: center;
+
+  }
+
+
+.ReciverContainer{
+
+    display: flex;
+
+
+}
+
+
+  .PostRecieverButton{
+
+
+
+
+  }
+
+
+  .PostRecieveContainer{
+
+    display: flex;
+    height: 30px;
+    font-size: 13px;
+    width: 500px;
+    margin-left: 10px;
+  }
+
+  .row {
+
+    flex-direction: row;
+
+  }
+
+  
+
+  .p1{
+
+    border: 2px solid #ccdff9;
+    flex-basis: 50px;
+    padding: 3px;
+    text-align: center;
+ 
+
+  }
+
+  .p2{
+    border: 2px solid #ccdff9;
+    flex-basis: 200px;
+    padding: 3px;
+    text-align: center;
+  }
+
+  .p3{
+    border: 2px solid #ccdff9;
+    flex-basis: 60px;
+    padding: 3px;
+    text-align: center;
+  }
+
+
+
+  .P4 {
+
+    flex-basis: 30px;
+    background-color: #ffffff;
+    color: #000000;
+    border: 2px solid #ccdff9;
+    padding: 10px 20px;
+    font-size: 12px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s ease;
+
+  } 
+
+  .P5 {
+
+    width: 10px;
+    background-color: #ffffff;
+    color: #000000;
+    border: 2px solid #ccdff9;
+    padding: 10px 20px;
+    font-size: 12px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s ease;
+
+  }  
+  
+  .p4,p5:hover {
+    background-color: gray;
+    color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+
+
+
+  

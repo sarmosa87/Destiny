@@ -1,0 +1,46 @@
+.boardContainer {
+
+   
+    margin: auto;
+    width: 1500px;
+    height: 1500px;
+
+
+}
+
+
+.boardContainer .menu{
+
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+
+}
+
+
+.boardContainer h1 {
+
+    text-align: center;
+
+}
+
+
+
+
+
+
+.WriteContainer {
+
+    border: 1px solid #eee;
+    margin: auto;
+    margin-top: 50px;
+    width: 500px;
+    height: 500px;
+
+
+}
+
+.WriteContainer h1{
+
+    text-align: center;
+
+}

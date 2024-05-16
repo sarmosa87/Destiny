@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.project.mapper.BoardMapper">
+
+   
+     <select id="boardNum" resultType="int">
+            SELECT COALESCE(MAX(registNum), 0) FROM board
+    </select>
+
+    <insert id="insertBoard" parameterType="com.project.dto.BoardDTO">
+        insert into board (registNum,subject,content,id,hitcount,registData) values 
+        (#{registNum},#{subject},#{content},#{id},#{hitcount},sysdate)
+    </insert>
+
+    <select id="boardList" resultType="com.project.dto.BoardDTO">
+    
+        select a.*,b.name from board a, test b where a.id=b.id
+    
+    </select>
+
+</mapper>
+

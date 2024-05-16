@@ -1,0 +1,73 @@
+.Login{
+
+    
+    border: 2px solid #ccdff9;
+    margin: auto;
+    width: 450PX;
+    height: 180px;
+    margin-top: 50px;
+    border-radius: 20px;
+}
+
+.Login h1{
+
+    text-align: center;
+}
+
+.Movement1{
+
+    margin-left: 50px;
+
+}
+
+
+.Movement2{
+
+    margin: auto;
+    margin-top: 70px;
+
+}
+
+
+
+#p1{
+
+margin-left: 25px;
+
+}
+
+
+#p2{
+
+margin-left: 10px;
+
+}
+
+#Movement3{
+
+
+    margin-top: 20px;
+
+}
+
+.Login button {
+    background-color: #ffffff;
+    color: #000000;
+    border: 2px solid #ccdff9;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s ease;
+    margin: auto;
+    width: 450px;
+
+  }
+  
+  .Login button:hover {
+    background-color: #5291e9;
+    color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: scale(1.2);
+  }

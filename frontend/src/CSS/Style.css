@@ -1,0 +1,138 @@
+.wrap { width: 1500px;  margin: auto;}
+.wrap h1 { font-size: 50px; text-align: center; padding:30px 0}
+.wrap .menu { text-align: center; } 
+.wrap .menu button { padding:15px 45px;  color:#000; margin-right: 15px; border:none; cursor: pointer; 
+border-bottom: 1px solid #000;}
+
+.wrap .list { display: flex; flex-wrap: wrap; margin-top: 50px;}
+.wrap .list li { width: 350px;  margin-right: 20px; margin-bottom: 25px; border: 1px solid #000; padding: 15px; }
+.wrap .list li:nth-child(3n) { margin-right: 0;}
+.wrap .list li img {width: 350px;}
+.wrap .list li h2 { font-size: 18px; margin-top: 10px; }
+.wrap .list li h3 { font-size: 25px; color:tomato; margin-right: 10px; margin-bottom: 15px;}
+.wrap .list li p {margin-bottom: 5px;}
+
+.modal .chat p.right {
+  text-align: right;
+  color: green;
+}
+
+.modal .chat p.left {
+  text-align: left;
+  color: blue;
+}
+
+.modal .bg {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal .popup {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  background: white;
+  padding: 20px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+.modal .chat {
+  height: 300px;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+.chatting input[type='text'] {
+  width: calc(100% - 22px);
+  padding: 10px;
+}
+
+.chatting button {
+  padding: 5px 10px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.chat {
+    max-height: 300px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-top: 10px;
+  }
+  
+  .chat p {
+    margin: 5px 0;
+  }
+  
+  .chat input[type="text"] {
+    width: calc(100% - 20px);
+    padding: 5px;
+    margin-top: 10px;
+  }
+  
+  .chat button {
+    margin-top: 10px;
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .chat button:hover {
+    background-color: #0056b3;
+  }
+
+
+  .button-container {
+    display: flex;
+    gap: 10px; /* 버튼 사이의 간격 설정 */
+  }
+  
+  .button-container button {
+    /* 버튼 스타일 설정 */
+    padding: 10px 20px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .button-container button:hover {
+    background-color: #0056b3;
+  }
+
+
+
+
+
+
+  .button_blue {
+    background-color: #ffffff;
+    color: #000000;
+    border: 2px solid #ccdff9;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s ease;
+  
+  }
+  
+  .button_blue:hover {
+    background-color: #5291e9;
+    color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: scale(1.2);
+  }

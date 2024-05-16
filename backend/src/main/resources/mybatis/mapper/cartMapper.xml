@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.project.mapper.CartMapper">
+
+
+    <select id="basketMaxNum" resultType="int">
+        SELECT COALESCE(MAX(basketNumber), 0) FROM diamondBasket   
+    </select>
+
+
+    <insert id="insertBasket" parameterType="com.project.dto.CartDTO">
+        insert into diamondBasket (basketNumber,id,name,diamonds,price,basketDate) values 
+        (#{basketNumber},#{id},#{name},#{diamonds},#{price},sysdate)
+    </insert>
+
+    <select id="basketList" parameterType="String" resultType="com.project.dto.CartDTO">
+        select *from diamondBasket where id=#{id} ORDER BY basketDate DESC
+    </select>
+
+  
+
+</mapper>
+

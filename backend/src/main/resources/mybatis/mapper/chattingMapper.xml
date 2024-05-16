@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.project.mapper.ChattingMapper">
+
+
+    <insert id="insertChat" parameterType="com.project.dto.ChatDTO">
+            insert into chat (chatNum,senderId,receiverId,message,timestamp) values 
+            (#{chatNum},#{senderId},#{receiverId},#{message},#{timestamp})
+    </insert>
+
+
+    <select id="maxNum" resultType="int">
+            SELECT COALESCE(MAX(chatNum), 0) FROM chat
+    </select>
+
+
+
+     <select id="chatList" parameterType="com.project.dto.ChatDTO" resultType="com.project.dto.ChatDTO">
+        select *from chat where senderId = #{senderId} AND receiverId = #{receiverId} or senderId = #{receiverId} AND receiverId = #{senderId} 
+
+    </select>
+
+
+      <select id="chattingList" parameterType="String" resultType="com.project.dto.ChatDTO">
+      SELECT chatNum, senderId, receiverId, message, timestamp
+        FROM (
+            SELECT chatNum, senderId, receiverId, message, timestamp,
+                   ROW_NUMBER() OVER (PARTITION BY CASE WHEN senderId = #{senderId} THEN receiverId ELSE senderId END ORDER BY timestamp DESC) AS rn
+            FROM chat
+            WHERE senderId = #{senderId} OR receiverId = #{senderId}
+        )
+        WHERE rn = 1
+    </select>
+
+
+    <select id="ranMaxNum" resultType="int">
+            SELECT COALESCE(MAX(chatNum), 0) FROM ranchat
+    </select>
+
+    <select id="ranList" parameterType="String" resultType="com.project.dto.ChatDTO">
+        select *from test where id!=#{id} and logchk='true'
+    </select>
+
+    <insert id="insertRanChat" parameterType="com.project.dto.ChatDTO">
+                insert into ranchat (chatNum,senderId,receiverId,message,timestamp) values 
+                (#{chatNum},#{senderId},#{receiverId},#{message},#{timestamp})
+    </insert>
+
+ 
+    <select id="ranChatList" parameterType="String" resultType="com.project.dto.ChatDTO">
+      SELECT chatNum, senderId, receiverId, message, timestamp
+        FROM (
+            SELECT chatNum, senderId, receiverId, message, timestamp,
+                   ROW_NUMBER() OVER (PARTITION BY CASE WHEN senderId = #{senderId} THEN receiverId ELSE senderId END ORDER BY timestamp DESC) AS rn
+            FROM ranChat
+            WHERE senderId = #{senderId} OR receiverId = #{senderId}
+        )
+        WHERE rn = 1
+    </select>
+
+
+      <select id="ranDomChatList" parameterType="com.project.dto.ChatDTO" resultType="com.project.dto.ChatDTO">
+        select *from ranchat where senderId = #{senderId} AND receiverId = #{receiverId} or senderId = #{receiverId} AND receiverId = #{senderId} 
+    </select>
+
+   
+
+</mapper>
+

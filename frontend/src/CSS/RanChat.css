@@ -1,0 +1,54 @@
+.wrab {
+    width: 100%;
+    max-width: 720px;
+    background-color: #fff;
+    margin: auto;
+    padding: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-top: 1px solid #eee;
+}
+
+.ran-chat-item {
+    border-bottom: 1px solid #eee;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.ran-chat-item:hover {
+    background-color: #f9f9f9;
+}
+
+.chat-header h3 {
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    color: #333;
+}
+
+.chat-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.message-preview {
+    font-size: 14px;
+    color: #666;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.chat-time {
+    font-size: 12px;
+    color: #999;
+    text-align: right; /* 시간 텍스트 오른쪽 정렬 */
+    flex: none; /* flex-grow, flex-shrink 비활성화 */
+}

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.project.mapper.UsersMapper">
+
+    <insert id="insertDate" parameterType="com.project.dto.UsersDTO">
+              insert into users (id,password,name,gender,tall,weight,saveFileName,originalFileName,mbti) values 
+              (#{id},#{password},#{name},#{gender},#{tall},#{weight},,#{saveFileName},#{originalFileName},#{mbti}) 
+    </insert>
+
+ 
+    <select id="idCheck" parameterType="String" resultType="com.project.dto.UsersDTO">
+               select id,password,name from users where id=#{id}
+    </select>
+
+  
+    <select id="getList" parameterType="com.project.dto.UsersDTO" resultType="com.project.dto.UsersDTO">
+         select * from users
+        <where>
+         <if test="gender != null and gender != ''">
+         and gender = #{gender}
+        </if>
+        <if test="tall != null and tall != ''">
+        and tall = #{tall}
+        </if>
+        <if test="weight != null and weight != ''">
+        and weight = #{weight}
+        </if>
+  </where>
+    </select>
+
+    <select id='userCheck' parameterType="String" resultType="com.project.dto.UsersDTO">
+    
+    select *from users where id=#{id}
+    
+    </select>
+
+
+
+
+</mapper>
+

@@ -1,0 +1,45 @@
+.Post {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid black;
+    border-radius: 20px;
+    margin: auto;
+    width: 500px;
+    height: 300px;
+    background: #e6e6e6;
+}
+
+.Post h2{
+
+    text-align: center;
+}
+
+
+
+.Post button {
+    background-color: #ffffff;
+    color: #000000;
+    border: 2px solid #ccdff9;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s ease;
+
+  }
+  
+  .Post button:hover {
+    background-color: #5291e9;
+    color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: scale(1.2);
+  }
+
+#PostButton {
+
+    margin: auto;
+
+}

@@ -1,0 +1,35 @@
+.SignUpContainer{
+
+    border: 2px solid #ccdff9;
+    margin: auto;
+    width: 500PX;
+    height: 600px;
+    margin-top: 50px;
+    border-radius: 20px;
+}
+
+
+.SignUpContainer h1{
+
+    text-align: center;
+}
+
+.SignUpContainer p{
+
+    margin-left: 20px;
+
+}
+
+.SignUpContainer label{
+
+    font-size: 15px;
+
+}
+
+.ButtonMove{
+
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+
+}
