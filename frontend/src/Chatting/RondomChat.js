@@ -2,6 +2,10 @@ import React, { useState, useEffect, useRef } from 'react';
 import io from 'socket.io-client';
 import axios from 'axios';
 import moment from 'moment';
+import '../CSS/ChatStyle.css';
+
+
+//랜덤채팅에서 무작위로 상대를 선정하고 채팅할 수 있는 화면
 
 const socket = io('ws://192.168.16.15:8080/ws', {
   reconnection: true,
@@ -25,13 +29,11 @@ const RandomChat = ({ ranChatClose }) => {
     return () => {
       clearTimeout(timeoutHandle);
       socket.off();
-      setChatStatus(false);
     };
   }, []);
 
   const findPartner = async () => {
     setLoading(true);
-    await setChatStatus(true);
     const handle = setTimeout(() => {
       if (!partner) {
         setLoading(false);
@@ -55,19 +57,8 @@ const RandomChat = ({ ranChatClose }) => {
       setLoading(false);
       console.error("Failed to find partner:", error);
       alert("대화 상대를 찾는 데 실패했습니다.");
-      setChatStatus(false);
-      handleClose();
-    }
-  };
 
-  const setChatStatus = async (status) => {
-    try {
-      await axios.post('http://localhost:8081/api/setChatStatus', {
-        id: user.id,
-        logChk: status
-      });
-    } catch (error) {
-      console.error("Failed to set chat status:", error);
+      handleClose();
     }
   };
 
@@ -82,7 +73,6 @@ const RandomChat = ({ ranChatClose }) => {
 
 
   const handleClose = () => {
-    setChatStatus(false);
     ranChatClose();
   };
 
@@ -135,8 +125,23 @@ const RandomChat = ({ ranChatClose }) => {
               <div ref={messageEndRef} />
             </div>
             <input type='text' value={message} onChange={(e) => setMessage(e.target.value)} autoFocus onKeyDown={handleKeyDown} />
-            <button onClick={sendMessage}>Send</button>
-            <button onClick={handleClose}>Close</button>
+            <div style={{display:'flex', justifyContent:'center'}}>
+            <button style={{
+                width:'70px',
+                backgroundColor:' #ffffff',
+                border: '2px solid #ccdff9',
+                cursor: 'pointer',  
+                fontSize:'15px'
+            }} onClick={sendMessage}>Send</button>
+            <button style={{
+
+              width:'70px',
+              backgroundColor:' #ffffff',
+              border: '2px solid #ccdff9',
+              cursor: 'pointer',  
+              fontSize:'15px'
+            }} onClick={handleClose}>Close</button>
+            </div>
           </>
         )}
       </div>

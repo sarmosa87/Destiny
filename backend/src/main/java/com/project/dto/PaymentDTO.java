@@ -9,10 +9,13 @@ public class PaymentDTO {
 
     private int orderNumber;
     private String id;
-    private int diamonds;
+    private Integer diamonds;
     private int price;
     private String paymentDate;
     private String payCheck;
-    private List<PaymentDTO> lists; 
+    private List<PaymentDTO> lists;
+    private String startDate;
+    private String endDate;
+    private List<Integer> orderNumbers;
 
 }

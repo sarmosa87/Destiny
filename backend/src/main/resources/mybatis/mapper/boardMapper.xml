@@ -15,12 +15,52 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         insert into board (registNum,subject,content,id,hitcount,registData) values 
         (#{registNum},#{subject},#{content},#{id},#{hitcount},sysdate)
     </insert>
+ 
+<select id="boardList" resultType="com.project.dto.BoardDTO" parameterType="map">
+    SELECT a.registNum,a.id,a.hitcount,a.content,a.subject,TO_CHAR(registData, 'YYYY-MM-DD') AS registData, b.name 
+    FROM board a 
+    JOIN users b ON a.id = b.id
+    <where>
+        <if test="searchValue != null and searchValue != ''">
+            <choose>
+                <when test="searchKey == 'subject'">
+                    AND a.subject LIKE '%' || #{searchValue} || '%'
+                </when>
+                <when test="searchKey == 'name'">
+                    AND b.name LIKE '%' || #{searchValue} || '%'
+                </when>
+                <when test="searchKey == 'content'">
+                    AND a.content LIKE '%' || #{searchValue} || '%'
+                </when>
+                <otherwise>
+                    AND a.subject LIKE '%' || #{searchValue} || '%'
+                </otherwise>
+            </choose>
+        </if>
+    </where>
+    order by a.REGISTNUM DESC
+</select>
 
-    <select id="boardList" resultType="com.project.dto.BoardDTO">
-    
-        select a.*,b.name from board a, test b where a.id=b.id
+    <select id="boardContent" parameterType="int" resultType="com.project.dto.BoardDTO">
+        select a.registNum,a.id,a.hitcount,a.content,a.subject,TO_CHAR(registData, 'YYYY-MM-DD') AS registData,b.name from board a,users b where a.id=b.id and a.registNum=#{registNum}
+    </select>
+
+    <select id="insertComment" parameterType="com.project.dto.CommentDTO"> 
+
+        insert into comments (commnetNum,message,registNum,id,commentData) values (#{commnetNum},#{message},#{registNum},#{id},sysdate)
     
     </select>
+
+      <select id="commentNum" resultType="int">
+            SELECT COALESCE(MAX(commnetNum), 0) FROM comments
+    </select>
+
+    <select id="commentList" parameterType="int" resultType="com.project.dto.CommentDTO" >
+            select a.*,b.name from comments a,users b where a.id=b.id and registNum=#{registNum}
+    </select>
+
+
+
 
 </mapper>
 

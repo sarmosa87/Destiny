@@ -20,20 +20,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 
      <select id="chatList" parameterType="com.project.dto.ChatDTO" resultType="com.project.dto.ChatDTO">
-        select *from chat where senderId = #{senderId} AND receiverId = #{receiverId} or senderId = #{receiverId} AND receiverId = #{senderId} 
+        select *from chat where senderId = #{senderId} AND receiverId = #{receiverId} or senderId = #{receiverId} AND receiverId = #{senderId}
+        order by chatNum asc
 
     </select>
 
 
       <select id="chattingList" parameterType="String" resultType="com.project.dto.ChatDTO">
-      SELECT chatNum, senderId, receiverId, message, timestamp
-        FROM (
-            SELECT chatNum, senderId, receiverId, message, timestamp,
-                   ROW_NUMBER() OVER (PARTITION BY CASE WHEN senderId = #{senderId} THEN receiverId ELSE senderId END ORDER BY timestamp DESC) AS rn
-            FROM chat
-            WHERE senderId = #{senderId} OR receiverId = #{senderId}
-        )
-        WHERE rn = 1
+        SELECT c.chatNum, c.senderId, c.receiverId, c.message, c.timestamp, u.name
+    FROM (
+        SELECT chatNum, senderId, receiverId, message, timestamp,
+              CASE WHEN senderId = #{senderId} THEN receiverId ELSE senderId END AS otherUserId,
+              ROW_NUMBER() OVER (PARTITION BY CASE WHEN senderId = #{senderId} THEN receiverId ELSE senderId END ORDER BY chatNum DESC) AS rn
+        FROM chat
+        WHERE senderId = #{senderId} OR receiverId = #{senderId}
+    ) c
+    JOIN users u ON u.id = c.otherUserId
+    WHERE c.rn = 1
     </select>
 
 
@@ -41,8 +44,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             SELECT COALESCE(MAX(chatNum), 0) FROM ranchat
     </select>
 
-    <select id="ranList" parameterType="String" resultType="com.project.dto.ChatDTO">
-        select *from test where id!=#{id} and logchk='true'
+    <select id="findUser" parameterType="String" resultType="com.project.dto.UsersDTO">
+        select *from users where id!=#{id} 
     </select>
 
     <insert id="insertRanChat" parameterType="com.project.dto.ChatDTO">
@@ -52,19 +55,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
  
     <select id="ranChatList" parameterType="String" resultType="com.project.dto.ChatDTO">
-      SELECT chatNum, senderId, receiverId, message, timestamp
-        FROM (
-            SELECT chatNum, senderId, receiverId, message, timestamp,
-                   ROW_NUMBER() OVER (PARTITION BY CASE WHEN senderId = #{senderId} THEN receiverId ELSE senderId END ORDER BY timestamp DESC) AS rn
-            FROM ranChat
-            WHERE senderId = #{senderId} OR receiverId = #{senderId}
-        )
-        WHERE rn = 1
+       SELECT c.chatNum, c.senderId, c.receiverId, c.message, c.timestamp, u.name
+    FROM (
+        SELECT chatNum, senderId, receiverId, message, timestamp,
+              CASE WHEN senderId = #{senderId} THEN receiverId ELSE senderId END AS otherUserId,
+              ROW_NUMBER() OVER (PARTITION BY CASE WHEN senderId = #{senderId} THEN receiverId ELSE senderId END ORDER BY chatNum DESC) AS rn
+        FROM ranchat
+        WHERE senderId = #{senderId} OR receiverId = #{senderId}
+    ) c
+    JOIN users u ON u.id = c.otherUserId
+    WHERE c.rn = 1
     </select>
 
 
       <select id="ranDomChatList" parameterType="com.project.dto.ChatDTO" resultType="com.project.dto.ChatDTO">
-        select *from ranchat where senderId = #{senderId} AND receiverId = #{receiverId} or senderId = #{receiverId} AND receiverId = #{senderId} 
+        select *from ranchat where senderId = #{senderId} AND receiverId = #{receiverId} or senderId = #{receiverId} AND receiverId = #{senderId}
+        order by chatNum asc
     </select>
 
    

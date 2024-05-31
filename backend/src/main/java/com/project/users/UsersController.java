@@ -19,7 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.project.dto.UsersDTO;
 
 
-
+//회원 가입 및 로그인 기능
 @RestController
 public class UsersController {
 
@@ -29,13 +29,12 @@ public class UsersController {
     @Resource
     private UsersService usersService;
 
-    
+    //회원가입 하는 기능
     @PostMapping("/api/add")
     public String postMethodName(@ModelAttribute UsersDTO dto) throws Exception {
 
 
        
-    
         MultipartFile file = dto.getUpload();
     
         if (file == null || file.isEmpty()) {
@@ -62,10 +61,9 @@ public class UsersController {
         return "success";
     }
 
+    //유저 리스트를 불러오는 기능
     @PostMapping("/api/getList")
     public Map<String, Object> getList(@RequestBody UsersDTO dto) throws Exception {
-
-        System.out.println("여기로 오나????");
 
 
         List<UsersDTO> lists = usersService.getList(dto);
@@ -81,11 +79,9 @@ public class UsersController {
 
     }
 
-    
+    //회원가입 시 중복아이디인지 확인하는 기능
     @PostMapping("/api/overlapCheck")
     public ResponseEntity<?> idCheck(@RequestBody String id) throws Exception {
-
-    System.out.println("여기로 왜 안오네?");
 
     UsersDTO dto = usersService.userCheck(id);
 
@@ -96,50 +92,34 @@ public class UsersController {
     }
 }
 
-
+    //로그인시 회원정보를 확인하는 기능
     @PostMapping("/api/login")
-    public Map<String, Object> login(@RequestBody UsersDTO dto) throws Exception {
+    public ResponseEntity<?> login(@RequestBody UsersDTO dto) throws Exception {
 
   
-
        String id = dto.getId();
        String pwd = dto.getPassword();
 
        UsersDTO dto2 = usersService.idCheck(id);
-
-       Map<String, Object> res = new HashMap<>();
-
     
        if (dto2 == null || !dto2.getPassword().equals(pwd)) {
-            res.put("error", "아이디 또는 비밀번호가 잘못되었습니다.");
-            return res;
+     
+        return ResponseEntity.status(HttpStatus.CONFLICT).body("사용자 정보가 일치하지 않습니다.");
 
       }else{
-      
-       String userId = dto2.getId();
-       String name = dto2.getName();
 
-        res.put("user", dto2);
-        res.put("success", true);
-    
-        /* 
-        session.setAttribute("userId", userId);
-        session.setAttribute("name", name);
-        */
-        return res;
+        if(dto2.getDiamonds()==null){
+
+            dto2.setDiamonds(0);
+
+        }
+      
+        return ResponseEntity.ok(dto2); 
+        
       }
     
     }
 
-    /* 
-    @GetMapping("/api/logout")
-    public Map<String, Object> logout(HttpSession session) {
 
-    session.invalidate();  // 세션 무효화
-
-    Map<String, Object> res = new HashMap<>();
-    res.put("message", "Logged out successfully");
-    return res;
-    */
 
 }

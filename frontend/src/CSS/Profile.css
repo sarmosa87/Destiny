@@ -14,36 +14,41 @@
 }
 
 
-.row {
-
-    flex-direction: row;
-
-  }
-
 
 .profileBox {
 
 
-  
     display: flex;
+    justify-content: center;
+    
+    
+}
 
+.profileBox img{
+
+    border: 1px solid black;
+    width: 250px;
+    height: 250px;
+
+
+}
+
+.profileBox .profile{
+
+    border: 1px solid 3px;
  
 
 
+}
+
+
+
+.profile p{
+
+   
+    width: 250px;
+    
 
 }
 
-.profileBox2{
 
-border-right: 1px solid black;
-
-
-
-}
-
-.profileBox3{
-
-
-
-
-}

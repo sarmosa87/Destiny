@@ -13,14 +13,16 @@ public class UsersDTO {
     private String id;
     private String name;
     private String password;
-    private String zipCode;
+    private int zipCode;
     private String address;
     private String detailAddress;
     private String gender;
-    private String mbti;  
+    private String mbti;
+    
     
     private int tall;
     private int weight;
+    private Integer diamonds;
 
     private String saveFileName;
 	private String originalFileName;

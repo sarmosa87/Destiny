@@ -19,7 +19,7 @@ public interface ChattingService {
 
     public int ranMaxNum() throws Exception;
 
-    public List<UsersDTO> ranList(String id) throws Exception;
+    public List<UsersDTO> findUser(String id) throws Exception;
 
     public List<ChatDTO> ranChatList(String id) throws Exception;
 

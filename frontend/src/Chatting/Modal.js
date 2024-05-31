@@ -4,7 +4,10 @@ import axios from 'axios';
 import moment from 'moment';
 import '../CSS/ChatStyle.css';
 
-// Socket 초기화 및 연결 설정
+
+//쪽지함 쪽지리스트에서 채팅을 눌러서 대화하는 화면
+
+
 const socket = io('ws://localhost:8081/ws', {
   reconnection: true,
   reconnectionDelay: 1000,
@@ -24,7 +27,7 @@ const Modal = ({ users, onClose }) => {
     }
 
     // 데이터를 불러오는 과정에서 오류가 발생하더라도 사용자에게 알리지 않고 진행
-    axios.get(`http://localhost:8081/api/messages/${user.id}/${users.senderId}`)
+    axios.get(`http://localhost:8081/api/messageList/${user.id}/${users.senderId}`)
       .then(response => {
         setMessages(response.data);
       })
@@ -70,7 +73,7 @@ const Modal = ({ users, onClose }) => {
     };
 
     socket.emit('chat.send', newMessage);
-    axios.post('http://localhost:8081/api/messages', newMessage)
+    axios.post('http://localhost:8081/api/messageInsert', newMessage)
       .then(response => {
         console.log('Message saved:', response.data);
         setMessages(prevMessages => [...prevMessages, newMessage]);
@@ -83,18 +86,6 @@ const Modal = ({ users, onClose }) => {
     setMessage('');
   };
 
-  if (!user || !users) {
-    return (
-      <div className="chatting">
-        <div className="bg" onClick={onClose}></div>
-        <div className="popup">
-          <h3>Login Required</h3>
-          <p>Please log in to view and send messages.</p>
-          <button onClick={onClose}>Close</button>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className='chatting'>
@@ -111,8 +102,10 @@ const Modal = ({ users, onClose }) => {
           <div ref={messageEndRef} />
         </div>
         <input type='text' value={message} onChange={handleMessageChange} autoFocus onKeyDown={handleKeyDown} />
-        <button onClick={handleSendMessage}>Send</button>
-        <button onClick={onClose}>Close</button>
+        <div style={{display:'flex', justifyContent:'center'}}>
+        <button style={{width:'70px'}} onClick={handleSendMessage}>Send</button>
+        <button style={{width:'70px'}} onClick={onClose}>Close</button>
+        </div>
       </div>
     </div>
   );

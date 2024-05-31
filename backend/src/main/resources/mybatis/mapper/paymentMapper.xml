@@ -18,8 +18,43 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
     <select id="payList" parameterType="String" resultType="com.project.dto.PaymentDTO">
         SELECT * FROM payment
-        WHERE id = #{id} AND (payCheck IS NULL OR LOWER(payCheck) != 'true')
+        WHERE id = #{id} AND (payCheck IS NULL OR LOWER(payCheck) != 'true') AND diamonds > 0
     </select>
+
+    <update id="payCheck" parameterType="com.project.dto.PaymentDTO">
+    
+        update payment set payCheck='true',paymentdate=sysdate  where orderNumber=#{orderNumber}
+    
+    </update>
+
+
+    <insert id="chargeInsert" parameterType="com.project.dto.PaymentDTO">
+        insert into payment (orderNumber,id,diamonds,paymentdate) values 
+        (#{orderNumber},#{id},#{diamonds},sysdate)
+    </insert>
+
+    
+ <select id="paymentList" parameterType="com.project.dto.PaymentDTO" resultType="com.project.dto.PaymentDTO">
+    
+        SELECT * 
+        FROM payment
+        <where>
+            payCheck = 'true'
+            AND id = #{id}
+            <if test="startDate != null and endDate != null">
+                AND paymentDate BETWEEN #{startDate} AND #{endDate}
+            </if>
+        </where>
+        ORDER BY orderNumber DESC
+        
+</select>
+
+
+    <delete id="paymentRemove" parameterType="int">
+    
+        delete from payment where orderNumber=#{orderNumber} and paycheck !='true'
+    
+    </delete>
 
 </mapper>
 

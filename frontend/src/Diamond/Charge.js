@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { IoDiamondOutline } from "react-icons/io5";
 import axios from 'axios';
+import '../CSS/Basket.css';
+
+//다이아를 충전하는 화면
 
 const Charge = () => {
 
@@ -8,11 +11,11 @@ const Charge = () => {
     const user = JSON.parse(localStorage.getItem('user'));
 
     const options = [
-        { diamonds: 100, price: 1000 },
-        { diamonds: 300, price: 2 },
-        { diamonds: 500, price: 3 },
-        { diamonds: 700, price: 4 },
-        { diamonds: 1000, price: 5 }
+        { diamonds: 100, price: 100},
+        { diamonds: 300, price: 300},
+        { diamonds: 500, price: 500 },
+        { diamonds: 700, price: 700 },
+        { diamonds: 1000, price: 1000 }
     ];
 
     const addToCart = async () => {
@@ -75,8 +78,10 @@ const Charge = () => {
                     </div>
                 ))}
             </div>
-            <button onClick={addToCart} style={{ margin: '20px', padding: '10px 20px', fontSize: '16px', cursor: 'pointer' }}>장바구니에 추가</button>
-            <button onClick={paymentReady} style={{ margin: '20px', padding: '10px 20px', fontSize: '16px', cursor: 'pointer' }}>구매하기</button>
+            <div className='basketContainer'>
+            <button onClick={addToCart} style={{marginRight:"40px"}} >장바구니에 추가</button>
+            <button onClick={paymentReady} style={{width:"150px"}}>구매하기</button>
+            </div>
         </div>
     );
 };

@@ -1,0 +1,110 @@
+.userListContainer{
+
+   margin: auto;
+   width: 1500px;
+  
+
+}
+
+.userListContainer h1{
+
+    text-align: center;
+  
+
+}
+
+
+
+.userListContainer .userList{
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+
+}
+
+.userListContainer .listBox{
+    
+
+    display: flex;
+    margin: 5px;
+ }
+
+.userListContainer .photo{
+
+    padding: 1px;
+    flex-basis: 300px;
+    border: 1px solid black;
+    height: 300px;
+    
+
+}
+
+
+.userListContainer .profile{
+
+flex-grow: 1;
+flex-basis: 200px;
+border: 1px solid black;
+padding-left: 20px;
+height: 300px;
+justify-content: center;
+display: flex;
+flex-direction: column;
+
+    
+}
+
+
+
+.userListContainer .OptionContainer {
+
+    position: absolute;
+    left: 64%;
+    top: 45%;
+    transform: translate(125%, -90%);
+    border: 1px solid black;
+    border-radius: 20px;
+    margin: auto;
+    width: 200px;
+    height: 250px;
+    background: #e6e6e6;
+
+}
+
+.userListContainer .OptionContainer button {
+
+
+    background-color: #ffffff;
+    color: #000000;
+    border: 2px solid #ccdff9;
+    border-radius: 20px;
+    font-size: 10px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s ease;
+    width: 60px;
+    height: 25px;
+
+
+}
+
+
+.userListContainer .OptionContainer button:hover {
+
+
+    
+        background-color: #5291e9;
+        color: #ffffff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+
+
+}
+
+
+
+
+
+

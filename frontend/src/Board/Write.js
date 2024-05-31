@@ -1,7 +1,10 @@
 import React,{useState} from 'react';
 import '../CSS/Board.css';
 import axios from 'axios';
-
+import { useNavigate } from 'react-router-dom';
+ 
+    
+//게시글을 등록하는 화면
 
 
 
@@ -9,6 +12,7 @@ const Write = () => {
 
 
     const user = JSON.parse(localStorage.getItem('user'));
+    const navigate = useNavigate();
     const [form,setForm] = useState({
 
         subject:'',
@@ -17,6 +21,11 @@ const Write = () => {
     })
 
     const {subject,content} = form
+
+    const cancle = () => {
+        navigate('/board');
+    };
+
 
 
     const onChange = (evt) => {
@@ -54,7 +63,7 @@ const Write = () => {
 
 
         <div className='WriteContainer'>
-            <h1>글쓰기</h1>
+            <h1>게시글 작성</h1>
             <p>
                 제목: <input type='text' name='subject' value={subject} onChange={onChange}></input>
             </p>
@@ -68,15 +77,13 @@ const Write = () => {
                 onChange={onChange}
                 placeholder="메시지 입력..."
                 rows="4"  // textarea의 높이 설정
-                cols="10"
-                resize= 'none'     
-                style={{ width: '100%' }}  // 너비를 100%로 설정하여 부모 요소를 채움
+                cols="10"     
+                style={{ width: '492px',resize: 'none',border: '2px solid #ccdff9',borderRadius:'5px' }}  // 너비를 100%로 설정하여 부모 요소를 채움
             />
             </p>
-            
-            <div>
-                <button onClick={addBoard}>글 등록</button>
-                <button>글 취소</button>
+            <div style={{display:'flex',justifyContent:'center',marginTop:'30px'}}>
+                <button onClick={addBoard}>등록</button>
+                <button onClick={cancle}>취소</button>
             </div>
         </div>
     );

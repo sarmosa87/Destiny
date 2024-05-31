@@ -2,7 +2,7 @@
 
    
     margin: auto;
-    width: 1500px;
+    width: 1000px;
     height: 1500px;
 
 
@@ -11,8 +11,9 @@
 
 .boardContainer .menu{
 
-    border-top: 1px solid #eee;
-    border-bottom: 1px solid #eee;
+    border-top: 3px solid #eee;
+    border-bottom: 3px solid #eee;
+    width: 950px;
 
 }
 
@@ -24,17 +25,43 @@
 }
 
 
+.boardContainer button {
+
+    background-color: #ffffff;
+    color: #000000;
+    border: 2px solid #ccdff9;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s ease;
+    
+
+  }
+  
+  .boardContainer button:hover {
+    background-color: #5291e9;
+    color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: scale(1.2);
+  }
 
 
 
 
-.WriteContainer {
+  .WriteContainer {
 
-    border: 1px solid #eee;
-    margin: auto;
-    margin-top: 50px;
-    width: 500px;
-    height: 500px;
+    
+
+        border: 2px solid #ccdff9;
+        margin: auto;
+        width: 500PX;
+        height: 350px;
+        margin-top: 50px;
+        border-radius: 20px;
+   
+    
 
 
 }
@@ -44,3 +71,324 @@
     text-align: center;
 
 }
+
+
+.WriteContainer input{
+
+
+    border: 2px solid #ccdff9;
+    border-radius: 5px;
+    width: 430px;
+
+ 
+}
+
+
+.WriteContainer button{
+
+
+    background-color: #ffffff;
+    color: #000000;
+    border: 2px solid #ccdff9;
+    border-radius: 20px;
+    font-size: 10px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s ease;
+    width: 100px;
+    height: 30px;
+    margin-left: 20px;
+    font-size: 15px;
+ 
+
+}
+
+
+.WriteContainer button:hover {
+    background-color: #5291e9;
+    color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+
+
+
+.BordList {
+
+    border-bottom: 1px solid #eee;
+    display: flex;
+    margin-top: 0px;
+    margin-left: 21px;
+    width: 950px;
+    height: 15px;
+    padding: 5px;
+
+
+}
+
+.BordList .c1{
+
+    text-align: center;
+    width: 50px;
+    height: 15px;
+    white-space: nowrap; /* 글자가 넘칠 경우 줄바꿈을 하지 않음 */
+    overflow: hidden; /* 내용이 넘칠 경우 숨김 */
+    text-overflow: ellipsis; /* 내용이 넘칠 경우 말줄임표(...) 사용 */
+    flex-shrink: 0;
+    flex-grow: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+
+}
+
+.BordList .c2{
+
+    margin-left: 20px;
+    width: 590px;
+    height: 15px;
+    white-space: nowrap; /* 글자가 넘칠 경우 줄바꿈을 하지 않음 */
+    overflow: hidden; /* 내용이 넘칠 경우 숨김 */
+    text-overflow: ellipsis; /* 내용이 넘칠 경우 말줄임표(...) 사용 */
+    flex-shrink: 0;
+    flex-grow: 0;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    font-size: 13px;
+
+}
+
+.BordList .c3{
+
+    text-align: center;
+    width: 75px;
+    height: 15px;
+    white-space: nowrap; /* 글자가 넘칠 경우 줄바꿈을 하지 않음 */
+    overflow: hidden; /* 내용이 넘칠 경우 숨김 */
+    text-overflow: ellipsis; /* 내용이 넘칠 경우 말줄임표(...) 사용 */
+    flex-shrink: 0;
+    flex-grow: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+
+}
+
+
+.BordList .c4{
+
+   
+    text-align: center;
+    width: 110px;
+    height: 15px;
+    white-space: nowrap; /* 글자가 넘칠 경우 줄바꿈을 하지 않음 */
+    overflow: hidden; /* 내용이 넘칠 경우 숨김 */
+    text-overflow: ellipsis; /* 내용이 넘칠 경우 말줄임표(...) 사용 */
+    flex-shrink: 0;
+    flex-grow: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+
+}
+
+.BordList .c5{
+
+    text-align: center;
+    width: 90px;
+    height: 15px;
+    white-space: nowrap; /* 글자가 넘칠 경우 줄바꿈을 하지 않음 */
+    overflow: hidden; /* 내용이 넘칠 경우 숨김 */
+    text-overflow: ellipsis; /* 내용이 넘칠 경우 말줄임표(...) 사용 */
+    flex-shrink: 0;
+    flex-grow: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+
+}
+
+
+
+
+.ContentContainer{
+
+    
+
+    height: 1000px;
+    margin-top: 30px;
+    
+
+
+}
+
+
+
+.ContentContainer .content{
+
+    border: 2px solid #eee;
+    width: 700px;
+    height: 30px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+
+ }
+
+ .content .c1{
+
+   
+    text-align: center;
+    margin-left: 170px;
+    width: 320px;
+    height: 20px;
+    white-space: nowrap; /* 글자가 넘칠 경우 줄바꿈을 하지 않음 */
+    overflow: hidden; /* 내용이 넘칠 경우 숨김 */
+    text-overflow: ellipsis; /* 내용이 넘칠 경우 말줄임표(...) 사용 */
+    flex-shrink: 0;
+    flex-grow: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 17px;
+
+
+
+ }
+
+
+ .content .c2{
+
+    
+    text-align: center;
+    margin-left: 3px;
+    width: 85px;
+    height: 15px;
+    white-space: nowrap; /* 글자가 넘칠 경우 줄바꿈을 하지 않음 */
+    overflow: hidden; /* 내용이 넘칠 경우 숨김 */
+    text-overflow: ellipsis; /* 내용이 넘칠 경우 말줄임표(...) 사용 */
+    flex-shrink: 0;
+    flex-grow: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+   
+
+    
+ }
+
+ .content .c3{
+
+ 
+    text-align: center;
+    margin-left: 3px;
+    width: 110px;
+    height: 15px;
+    white-space: nowrap; /* 글자가 넘칠 경우 줄바꿈을 하지 않음 */
+    overflow: hidden; /* 내용이 넘칠 경우 숨김 */
+    text-overflow: ellipsis; /* 내용이 넘칠 경우 말줄임표(...) 사용 */
+    flex-shrink: 0;
+    flex-grow: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+
+
+
+    
+ }
+
+
+ .ContentContainer .contentBox{
+
+
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+
+ }
+
+
+ .Comment{
+
+  margin-top: 20px;
+  margin-left: 598px;
+  display: flex;
+
+
+ }
+
+ .Comment button{
+
+    width: 100px;
+    height: 107px;
+    
+  
+  
+   }
+
+ .Comment button:hover {
+    background-color: #5291e9;
+    color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    
+  }
+
+
+  .Reply {
+
+    margin-top: 30px;
+    margin-left: 595px;
+    border-bottom: 2px solid #eee;
+    width: 700px;
+    padding: 10px;
+
+  }
+
+
+  .CommentList{
+
+    margin-top: 10px;
+    border-bottom: 2px solid #eee;
+    margin-left: 590px;
+    width: 710px;
+    padding: 8px;
+
+  }
+
+
+  .boardContainer button {
+    all: unset; /* 모든 기본 스타일과 상속된 스타일을 제거 */
+    cursor: pointer; /* 버튼으로서 기능적인 요소를 유지 */
+    padding: 5px 10px; /* 적당한 패딩 */
+    background-color: transparent; /* 배경색을 투명하게 */
+    color: black; /* 글자 색상 */
+    border: 1px solid grey; /* 기본적인 테두리 */
+}
+
+/* 호버 효과는 기본적인 변화만 */
+.boardContainer button:hover {
+    background-color: lightgrey; /* 호버시 배경색 변경 */
+}
+
+/* 특정 버튼에 대한 스타일 지정 예제 */
+.boardContainer .searchButton {
+    background-color: white; /* 백그라운드 컬러 변경 */
+    border-radius: 5px; /* 모서리 둥글게 */
+    font-weight: bold; /* 글자 두께 */
+    height: 15px;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+

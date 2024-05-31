@@ -1,28 +1,30 @@
 import React from 'react';
-import '../CSS/Style.css'
+import '../CSS/UserList.css';
 
-const Item = ({ item, imagePath, onItemClick }) => {
-    const { id, name, logChk, tall, weight, distance, gender, saveFileName } = item;
+//이상형찾기 리스트 별 데이터를 출력하는 화면
+
+const Item = ({ item,  onItemClick }) => {
+    const { id, name, mbti, tall, weight, distance, gender, saveFileName } = item;
 
     const handleClick = () => {
 
-    if(logChk==='false'){
-        alert('로그아웃상태라 채팅이 불가합니다.')
-    }else{
      onItemClick(item);
-    }
+  
     };
 
     return (
-        <li onClick={handleClick}>
-            <img src={`http://localhost:8081/image/${saveFileName}`} alt={name} />
+        <div onClick={handleClick} className='listBox'>
+            <div className='photo'>
+            <img src={`http://localhost:8081/image/${saveFileName}`} alt={name} style={{width:"300px",height:"300px"}} />
+            </div>
+            <div className='profile' style={{width:"150px"}}>
             <p>이름: {name}</p>
-            <p>키: {tall}</p>
-            <p>몸무게: {weight}</p>
-            <p>거리: {distance}</p>
+            <p>키: {tall}cm</p>
+            <p>몸무게: {weight}kg</p>
+            <p>MBTI: {mbti}</p>
             <p>성별: {gender}</p>
-            <p>로그인: {logChk === 'false' ? '로그아웃' : '로그인'}</p>
-        </li>
+            </div>
+        </div>
     );
 };
 

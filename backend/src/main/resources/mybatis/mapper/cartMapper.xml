@@ -18,10 +18,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </insert>
 
     <select id="basketList" parameterType="String" resultType="com.project.dto.CartDTO">
-        select *from diamondBasket where id=#{id} ORDER BY basketDate DESC
+        SELECT basketNumber, id,diamonds, price, TO_CHAR(basketDate, 'YYYY-MM-DD') AS basketDate
+        FROM diamondBasket
+        WHERE id=#{id}
+        ORDER BY basketDate DESC
     </select>
-
-  
 
 </mapper>
 

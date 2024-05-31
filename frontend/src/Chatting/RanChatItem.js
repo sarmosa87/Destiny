@@ -1,8 +1,10 @@
 import React from 'react';
 import '../CSS/RanChat.css';
 
+//랜덤채팅에서 대화 했던 리스트 별 데이터를 출력하는 화면
+
 const RanChatItem = ({ item, onItemClick }) => {
-    const { senderId, receiverId, message, timestamp } = item;
+    const { senderId, receiverId, message, timestamp,name } = item;
 
     const handleClick = () => {
         onItemClick(item);
@@ -17,10 +19,10 @@ const RanChatItem = ({ item, onItemClick }) => {
     return (
         <li className="ran-chat-item" onClick={handleClick}>
             <div className="chat-header">
-                <h3>{receiverId}</h3>
+                <h3>{name}</h3>
             </div>
             <div className="chat-content">
-                <p className="message-preview">{message.substring(0, 40) + '...'}</p>
+                <p className="message-preview">{message.substring(0, 40)}</p>
                 <div className="chat-time">{formattedTime}</div>
             </div>
         </li>

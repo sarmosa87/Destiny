@@ -7,13 +7,38 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.project.mapper.UsersMapper">
 
     <insert id="insertDate" parameterType="com.project.dto.UsersDTO">
-              insert into users (id,password,name,gender,tall,weight,saveFileName,originalFileName,mbti) values 
-              (#{id},#{password},#{name},#{gender},#{tall},#{weight},,#{saveFileName},#{originalFileName},#{mbti}) 
+              insert into users (id,password,name,gender,tall,weight,saveFileName,originalFileName,mbti,zipCode,address,detailAddress) values 
+              (#{id},#{password},#{name},#{gender},#{tall},#{weight},#{saveFileName},#{originalFileName},#{mbti},#{zipCode},#{address},#{detailAddress}) 
     </insert>
 
- 
-    <select id="idCheck" parameterType="String" resultType="com.project.dto.UsersDTO">
-               select id,password,name from users where id=#{id}
+
+   <select id="idCheck" parameterType="String" resultType="com.project.dto.UsersDTO">
+    <![CDATA[
+      SELECT 
+          u.id,
+          u.name,
+          u.password,
+          SUM(CASE 
+                  WHEN p.payCheck = 'true' THEN p.diamonds 
+                  WHEN p.diamonds < 0 THEN p.diamonds 
+                  ELSE 0 
+              END) AS diamonds
+      FROM 
+          users u
+      LEFT JOIN 
+          payment p ON u.id = p.id
+      WHERE 
+          u.id = #{id}
+      GROUP BY 
+          u.id, u.name, u.password
+    ]]>
+</select>
+
+
+     <select id='userCheck' parameterType="String" resultType="com.project.dto.UsersDTO">
+    
+    select * from users where id=#{id}
+    
     </select>
 
   
@@ -32,14 +57,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   </where>
     </select>
 
-    <select id='userCheck' parameterType="String" resultType="com.project.dto.UsersDTO">
-    
-    select *from users where id=#{id}
-    
-    </select>
-
-
 
 
 </mapper>
+
+   
+
+
+
 

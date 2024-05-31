@@ -1,12 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import BasketItem from './BasketItem';
+import '../CSS/Payment.css';
+
+//장바구니 리스트를 출력하는 화면
+
 
 const BasketList = () => {
     const [lists, setLists] = useState([]);
-    const user = JSON.parse(localStorage.getItem('user'));
-
+    const user = JSON.parse(localStorage.getItem('user')) || {};
+  
     useEffect(() => {
+        
         const fetchData = async () => {
             try {
                 const res = await axios.get(`http://localhost:8081/api/basketList/${user.id}`);
@@ -53,7 +58,9 @@ const BasketList = () => {
             {lists.map((item, index) => (
                 <BasketItem key={index} item={item} index={index} />
             ))}
+            <div className='paymentContainer'>
              <button onClick={paymentReady} style={{ margin: '20px', padding: '10px 20px', fontSize: '16px', cursor: 'pointer' }}>구매하기</button>
+             </div>
         </div>
     );
 };

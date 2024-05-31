@@ -15,6 +15,13 @@ import com.project.mapper.PostMapper;
 public class PostServiceImpl implements PostService {
 
     
+    @Override
+    public void postRemove(int postNum) throws Exception {
+       
+        postMapper.postRemove(postNum);
+        
+    }
+
     @Autowired
     private PostMapper postMapper;
 

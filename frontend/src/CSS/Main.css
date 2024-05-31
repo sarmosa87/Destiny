@@ -1,0 +1,77 @@
+.mainContainer {
+    padding: 40px 20px; /* 상하 좌우 패딩 추가로 더욱 편안한 느낌 */
+}
+
+.heroSection {
+    position: relative;
+    height: 550px;
+    width: 1300px;
+    margin: auto;
+    background-color: #fff0f5; /* 연한 핑크색 배경 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.heroText {
+    color: #6a1b9a; /* 어두운 자주색 텍스트 */
+    background: rgba(255, 255, 255, 0.8); /* 배경에 반투명 효과 추가 */
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.heroText h1 {
+    font-size: 3.5rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.heroText p {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.ctaButton {
+    padding: 15px 30px;
+    background-color: #e91e63; /* 밝은 핑크색 버튼 */
+    border: none;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.ctaButton:hover {
+    background-color: #c2185b; /* 버튼 호버 색상 변경 */
+    transform: translateY(-3px); /* 클릭 효과 추가 */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.features {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    width: 1300px;
+    margin: auto;
+}
+
+.feature {
+    flex: 1;
+    padding: 10px;
+    background-color: #f1f1f1;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.feature h2 {
+    color: #333;
+}
+
+.feature p {
+    color: #666;
+}

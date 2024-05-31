@@ -4,6 +4,9 @@ import axios from 'axios';
 import moment from 'moment';
 import '../CSS/ChatStyle.css';
 
+
+//랜덤채팅 지난대화리스트에서 대화창을 열어서 채팅 할 수 있는 화면
+
 // Socket 초기화 및 연결 설정
 const socket = io('ws://localhost:8081/ws', {
   reconnection: true,
@@ -83,24 +86,12 @@ const RanModal = ({ users, onClose }) => {
     setMessage('');
   };
 
-  if (!user || !users) {
-    return (
-      <div className="chatting">
-        <div className="bg" onClick={onClose}></div>
-        <div className="popup">
-          <h3>Login Required</h3>
-          <p>Please log in to view and send messages.</p>
-          <button onClick={onClose}>Close</button>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className='chatting'>
       <div className='bg' onClick={onClose}></div>
       <div className='popup'>
-        <h3>{users.receiverId}님과 채팅</h3>
+        <h3>{users.name}님과 채팅</h3>
         <div className='chat'>
           {messages.map((msg, index) => (
             <div key={index} className={msg.senderId === user.id ? 'message right' : 'message left'}>
@@ -111,8 +102,22 @@ const RanModal = ({ users, onClose }) => {
           <div ref={messageEndRef} />
         </div>
         <input type='text' value={message} onChange={handleMessageChange} autoFocus onKeyDown={handleKeyDown} />
-        <button onClick={handleSendMessage}>Send</button>
-        <button onClick={onClose}>Close</button>
+        <div style={{display:'flex', justifyContent:'center'}}>
+        <button style={{
+        width:'70px',
+        backgroundColor:' #ffffff',
+        border: '2px solid #ccdff9',
+        cursor: 'pointer',  
+        fontSize:'15px'
+      }}onClick={handleSendMessage}>Send</button>
+        <button style={{  
+           width:'70px',
+           backgroundColor:' #ffffff',
+           border: '2px solid #ccdff9',
+           cursor: 'pointer',  
+           fontSize:'15px'
+      }} onClick={onClose}>Close</button>
+       </div>
       </div>
     </div>
   );

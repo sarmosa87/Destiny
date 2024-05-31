@@ -7,7 +7,6 @@
     top: 20%;
     width: 500px;
     height: 400px;
-
 }
 
 
@@ -22,7 +21,6 @@
 
     display: flex;
     justify-content: center;
-
 
 
 }
@@ -57,6 +55,7 @@
 
   .PostContainerList{
 
+    
     display: flex;
     height: 30px;
     font-size: 13px;
@@ -66,11 +65,6 @@
 
   }
 
-  .row {
-
-    flex-direction: row;
-
-  }
 
   
 
@@ -106,100 +100,174 @@
   }
 
 
-.ReciverContainer{
-
-    display: flex;
-
-
-}
-
-
-  .PostRecieverButton{
 
 
 
+  .PostContainer .PostRecieveContainer{
 
-  }
-
-
-  .PostRecieveContainer{
-
-    display: flex;
-    height: 30px;
-    font-size: 13px;
+    border: 1px solid black;
+    height: 100px;
     width: 500px;
     margin-left: 10px;
+    overflow-y: auto;
   }
 
-  .row {
 
-    flex-direction: row;
+  .PostList {
+
+    width: 480px;
+    height: 150px;
+    margin-left: 10px;
+    overflow: auto; 
+    text-overflow: ellipsis; 
+    flex-shrink: 0;
+    flex-grow: 0;
+    
+  }
+
+  .PostList .Box{
+
+    display: flex;
+
 
   }
+
+
 
   
 
   .p1{
-
-    border: 2px solid #ccdff9;
-    flex-basis: 50px;
+  
+    border: 1px solid #ccdff9;
     padding: 3px;
     text-align: center;
- 
-
+    width: 50px;
+    height: 15px;
+    white-space: nowrap; /* 글자가 넘칠 경우 줄바꿈을 하지 않음 */
+    overflow: hidden; /* 내용이 넘칠 경우 숨김 */
+    text-overflow: ellipsis; /* 내용이 넘칠 경우 말줄임표(...) 사용 */
+    flex-shrink: 0;
+    flex-grow: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+  
   }
 
   .p2{
-    border: 2px solid #ccdff9;
-    flex-basis: 200px;
+    border: 1px solid #ccdff9;
     padding: 3px;
     text-align: center;
+    width: 205px;
+    height: 15px;
+    white-space: nowrap; /* 글자가 넘칠 경우 줄바꿈을 하지 않음 */
+    overflow: hidden; /* 내용이 넘칠 경우 숨김 */
+    text-overflow: ellipsis; /* 내용이 넘칠 경우 말줄임표(...) 사용 */
+    flex-shrink: 0;
+    flex-grow: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+  
+    
+
   }
 
   .p3{
-    border: 2px solid #ccdff9;
-    flex-basis: 60px;
+    border: 1px solid #ccdff9;
+    width: 60px;
+    height: 15px;
     padding: 3px;
     text-align: center;
+    white-space: nowrap; /* 글자가 넘칠 경우 줄바꿈을 하지 않음 */
+    overflow: hidden; /* 내용이 넘칠 경우 숨김 */
+    text-overflow: ellipsis; /* 내용이 넘칠 경우 말줄임표(...) 사용 */
+    flex-shrink: 0;
+    flex-grow: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+  
   }
 
 
 
-  .P4 {
+  .P4{
 
-    flex-basis: 30px;
     background-color: #ffffff;
     color: #000000;
-    border: 2px solid #ccdff9;
-    padding: 10px 20px;
-    font-size: 12px;
+    border: 1px solid #ccdff9;
+    width: 30px;
     cursor: pointer;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transition: all 0.4s ease;
+    white-space: nowrap; /* 글자가 넘칠 경우 줄바꿈을 하지 않음 */
+    overflow: hidden; /* 내용이 넘칠 경우 숨김 */
+    text-overflow: ellipsis; /* 내용이 넘칠 경우 말줄임표(...) 사용 */
+    flex-shrink: 0;
+    flex-grow: 0;
 
   } 
 
-  .P5 {
 
-    width: 10px;
-    background-color: #ffffff;
-    color: #000000;
-    border: 2px solid #ccdff9;
-    padding: 10px 20px;
-    font-size: 12px;
-    cursor: pointer;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: all 0.4s ease;
-
-  }  
   
-  .p4,p5:hover {
+  .p4 :hover {
     background-color: gray;
     color: #ffffff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   }
 
 
+  
+  .PostList .Box button{
 
+    width: 250px;
+    background-color: #ffffff;
+    color: #000000;
+    border: 1px solid #ccdff9;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s ease;
 
   
+
+  }
+
+  .PostList .Box button:hover{
+
+    background-color: gray;
+    color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+  }
+
+  .PostButton button{
+
+
+    width: 100px;
+    height: 35px;
+    background-color: #ffffff;
+    color: #000000;
+    border: 1px solid #ccdff9;
+    border-radius: 20px;
+    margin: auto;
+    padding: 10px 20px;
+    font-size: 13px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s ease;
+
+
+
+
+  }
+
+

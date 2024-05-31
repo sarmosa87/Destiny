@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../CSS/Signup.css';
 
+
+//회원가입 화면
+
 const SignUp = () => {
 
   const [form, setForm] = useState({
@@ -16,11 +19,10 @@ const SignUp = () => {
     gender: '남자',
   });
 
-  const { id, password, passwordCheck, name, tall, weight, gender, mbti } = form;
+  const { id, password, passwordCheck, name, tall, weight, gender, mbti,detailAddress } = form;
   const [upload, setUpload] = useState(null);
   const [zipCode, setZipCode] = useState('');
   const [address, setAddress] = useState('');
-  const [detailAddress, setDetailAddress] = useState('');
   const [message,setMessage] = useState('');
 
   useEffect(() => {
@@ -139,6 +141,7 @@ const SignUp = () => {
         }
       });
       console.log(response);
+      setMessage("회원가입이 완료되었습니다.")
     } catch (error) {
       console.error('Registration failed:', error);
     }
@@ -146,6 +149,15 @@ const SignUp = () => {
 
 
   const idCheck = async () => {
+
+    if(id===''){
+
+      setMessage('아이디를 입력하세요')
+      return
+
+    }
+
+
     try {
         const response = await axios.post('http://localhost:8081/api/overlapCheck', { id: id });
         setMessage(response.data);
@@ -158,18 +170,32 @@ const SignUp = () => {
     }
 };
 
+  const pwCheck =() => {
+
+    if(password === passwordCheck){
+      setMessage("비밀번호를 제대로 입력했습니다.")
+    }else{
+      setMessage("비밀번호를 다시 확인해주세요")
+    }
+
+
+
+  } 
+
   return (
 
     <div className='SignUpContainer'>
 
       <h1>회원가입</h1>
+
+        <div id="message"> 
+          {message}
+        </div>
+        <div className='SignUpBox'>
         <p>
           <label>아이디 : </label>
           <input type='text' name='id' value={id} onChange={onChange} style={{ marginLeft: '50px' }}/>
-          <button type="button" onClick={idCheck}>중복확인</button>
-        </p>
-        <p>
-          <label style={{fontSize:'20px', marginTop:'0px'}}>{message}</label>
+          <button type="button" onClick={idCheck} style={{marginLeft:"10px"}}>중복확인</button>
         </p>
         <p>
           <label>패스워드 : </label>
@@ -178,6 +204,7 @@ const SignUp = () => {
         <p>
           <label>패스워드 확인 : </label>
           <input type='password' name='passwordCheck' value={passwordCheck} onChange={onChange}/>
+          <button type="button" onClick={pwCheck} style={{marginLeft:"10px"}}>중복확인</button>
         </p>
         <p>
           <label>이름 : </label>
@@ -186,7 +213,7 @@ const SignUp = () => {
         <p>
           <label>우편번호 : </label>
           <input type='text' name='zipCode' value={zipCode} onChange={onChange} style={{ marginLeft: '36px', width:'50px' }}/>
-          <button onClick={openPostcode} style={{marginLeft:'130px'}}>주소찾기</button>
+          <button onClick={openPostcode} style={{marginLeft:'10px'}}>주소찾기</button>
           <div id="popupPostcode" style={{ display: 'none' }}></div>
         </p>
         <p>
@@ -226,7 +253,7 @@ const SignUp = () => {
           <button type="submit" onClick={onSubmit}>회원가입</button>
           <button type="button" onClick={() => { /* 취소 로직 구현 */ }}>취소</button>
         </div>
-
+        </div>
     </div>
   );
 }

@@ -1,0 +1,30 @@
+.paymentContainer{
+
+    display: flex;
+    justify-content: center;
+
+
+}
+
+
+
+.paymentContainer button{
+    background-color: #ffffff;
+    color: #000000;
+    border: 2px solid #ccdff9;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s ease;
+    width: 150px;
+  
+  }
+  
+  .paymentContainer button:hover {
+    background-color: #5291e9;
+    color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: scale(1.2);
+  }

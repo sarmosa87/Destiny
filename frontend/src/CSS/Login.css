@@ -1,30 +1,43 @@
-.Login{
+.LoginContainer{
 
     
     border: 2px solid #ccdff9;
     margin: auto;
     width: 450PX;
-    height: 180px;
+    height: 200px;
     margin-top: 50px;
     border-radius: 20px;
+    
 }
 
-.Login h1{
+.LoginContainer h1{
 
     text-align: center;
+    
+}
+
+.LoginBox{
+
+    text-align: center;
+    color: red;
+    height: 10px;
+    font-size: 15px;    
 }
 
 .Movement1{
 
+   
     margin-left: 50px;
+    height: 90px;
 
 }
 
 
 .Movement2{
 
-    margin: auto;
+
     margin-top: 70px;
+  
 
 }
 
@@ -50,7 +63,7 @@ margin-left: 10px;
 
 }
 
-.Login button {
+.LoginContainer button {
     background-color: #ffffff;
     color: #000000;
     border: 2px solid #ccdff9;
@@ -65,9 +78,10 @@ margin-left: 10px;
 
   }
   
-  .Login button:hover {
+  .LoginContainer button:hover {
     background-color: #5291e9;
     color: #ffffff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transform: scale(1.2);
   }
+

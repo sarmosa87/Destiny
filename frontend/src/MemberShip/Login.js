@@ -4,28 +4,26 @@ import { useNavigate } from 'react-router-dom';
 import '../CSS/Login.css'
 
 
+//로그인을 할 수 있는 화면
+
 // props에서 updateUser 함수를 받음
-const Login = ({ updateUser }) => {
-
-
+const Login = ({updateUser,logout2}) => {
 
     const [form, setForm] = useState({
         id: '',
         password: ''
     });
-    const [name, setName] = useState('');
     const [message, setMessage] = useState('');
-    const [login, setLogin] = useState(false);
     const navigate = useNavigate();
-    const user = JSON.parse(localStorage.getItem('user'));
-    
-
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
 
     useEffect(() => {
-     
-
-       
+        const userData = JSON.parse(localStorage.getItem('user'));
+        if (userData) {
+            setUser(userData);
+        }
     }, [user]);
+   
 
     const handleSignUp = () => {
         navigate('/addUser');
@@ -42,28 +40,27 @@ const Login = ({ updateUser }) => {
         });
     };
 
+ 
+
     const onSubmit = async () => {
         try {
             const response = await axios.post('http://localhost:8081/api/login', {
                 id: id,
                 password: password,
             });
-            const res = response.data;
-            console.log("========="+response.data.id)
+          const user = response.data;
 
-            if (res.error) {
-                setMessage(res.error);
-                setTimeout(() => {
-                    setMessage('');
-                }, 3000);
-            } else if (res.success) {
-                localStorage.setItem('user', JSON.stringify(res.user));
-                updateUser(res.user);
-                setLogin(true);
-                setName(res.user.name);
-            }
+        if (user) {
+            localStorage.setItem('user', JSON.stringify(user)); // 사용자 정보를 localStorage에 저장
+            setUser(user)
+            updateUser(user)
+        }
         } catch (error) {
-            setMessage('회원정보가 없습니다.');
+            if (error.response && error.response.status === 409) {
+                setMessage('사용자 정보가 일치하지 않습니다.');
+            } else {
+                setMessage('서버 오류가 발생했습니다.');
+            }
             setTimeout(() => {
                 setMessage('')
             }, 3000);
@@ -72,12 +69,10 @@ const Login = ({ updateUser }) => {
 
     const logout = async () => {
         try {
-            //const res = await axios.get('http://localhost:8081/api/logout');
             localStorage.removeItem('user');
-            updateUser(null);
-            setLogin(false);
+            setUser(null)
+            logout2()
             setMessage("로그아웃이 완료됐습니다.");
-            setName('');
             setTimeout(() => {
                 setMessage('');
             }, 3000);
@@ -87,8 +82,8 @@ const Login = ({ updateUser }) => {
     };
 
     return (
-        <div className='Login'>
-            <h3>{message}</h3>
+        <div className='LoginContainer'>
+            <div className='LoginBox'>{message}</div>
             <h1>로그인</h1>
             {!user && (
             <div>
@@ -108,11 +103,9 @@ const Login = ({ updateUser }) => {
             )}
             {user && (
                 <div>
-                    <p>{user.name}님 반갑습니다.</p>
-                    <div className='Movement2'>
-                        <div>
-                        <button onClick={logout}>로그아웃</button>
-                        </div>
+                    <p style={{textAlign:"center", height:"90px"}}>{user.name}님 반갑습니다.</p>
+                    <div className='Movement2'>             
+                        <button onClick={logout}>로그아웃</button>                    
                         <div id='Movement3'>
                         <button onClick={handleSignUp}>회원가입</button>
                         </div>

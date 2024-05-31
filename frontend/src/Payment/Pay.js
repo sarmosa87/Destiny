@@ -1,12 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import PaymentItem from './PaymentItem';
+import '../CSS/Payment.css';
+
+
+//다이아 결제리스트를 출력하는 화면
 
 const Pay = () => {
     const [lists, setLists] = useState([]);
     const [error, setError] = useState('');
     const [totalPrice, setTotalPrice] = useState(0);
-    const user = JSON.parse(localStorage.getItem('user'));
+    const user = JSON.parse(localStorage.getItem('user'))|| {};
+    
 
     // 아임포트 스크립트 로딩
     useEffect(() => {
@@ -91,6 +96,28 @@ const Pay = () => {
             }, function (rsp) {
                 if (rsp.success) {
                     alert('결제가 완료되었습니다.');
+
+                    const payment = async () => {
+
+                        const selectedOrderNumbers = lists
+                        .filter(item => item.checked)
+                        .map(item => item.orderNumber);
+   
+                        try {
+                            const response = await axios.post('http://localhost:8081/api/payConfrim', { 
+                                orderNumbers: selectedOrderNumbers
+                            });
+                            alert("데이터전송 완료")
+                        } catch (error) {
+                            if (error.response && error.response.status === 409) {
+                                alert("데이터전송 실패")
+                            } else {
+                                alert("서버 오류")
+                            }
+                        }
+                    };
+
+                    payment()
                 } else {
                     alert(`결제 실패: ${rsp.error_msg}`);
                     console.log(rsp.error_msg);
@@ -98,6 +125,43 @@ const Pay = () => {
             });
         }
     };
+
+
+    const onRemove = async (orderNumber) => {
+
+
+        const confirmDelete = window.confirm('삭제하시겠습니까?');
+        if (!confirmDelete) {
+        // 사용자가 '취소'를 선택한 경우, 함수 실행을 중단
+        return;
+        }
+
+
+        try {
+
+      
+            const res = await axios.post('http://localhost:8081/api/paymentRemove', {
+                orderNumber: orderNumber
+         
+            });
+
+            if (res.status === 200) {
+                alert('삭제가 완료됐습니다.');
+                setLists(current => current.filter(item => item.orderNumber !== orderNumber)); // 삭제된 게시물 제거
+            }
+ 
+        } catch (error) {
+            if (error.response && error.response.status === 409) {
+                alert('삭제할 정보가 없습니다.');
+            } else {
+                alert('서버 오류가 발생했습니다.');
+            }
+        }
+    };
+
+    
+
+
 
     const handleToggle = index => {
         const newLists = lists.map((item, i) => {
@@ -124,12 +188,21 @@ const Pay = () => {
     return (
         <div style={{ width: '80%', margin: 'auto' }}>
             <h2 style={{ textAlign: 'center' }}>주문 결제</h2>
+            <div style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center', borderBottom: '2px solid black', padding: '10px' }}>
+                <span >체크박스</span>
+                <span>순번</span>
+                <span>다이아몬드</span>
+                <span>금액</span>
+                <span>기능</span>
+            </div>
             {lists.map((item, index) => (
-                <PaymentItem key={index} item={item} index={index} onToggle={handleToggle} onDelete={handleDelete} />
+                <PaymentItem key={index} item={item} index={index} onToggle={handleToggle} onRemove={onRemove} />
             ))}
             <div style={{ textAlign: 'center', margin: '20px 0' }}>
                 <p>합계 금액: {totalPrice} 원</p>
+                <div className='paymentContainer'>
                 <button onClick={handlePayment} style={{ padding: '10px 20px', fontSize: '16px', cursor: 'pointer' }}>결제하기</button>
+                </div>
             </div>
             {error && <p style={{ color: 'red', textAlign: 'center' }}>{error}</p>}
         </div>

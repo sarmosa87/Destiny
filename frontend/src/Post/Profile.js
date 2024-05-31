@@ -11,11 +11,12 @@ const Profile = ({onClose,id}) => {
     gender: "",
     tall: "",
     weight: "",
+    mbti:"",
     saveFileName: ""
     })
 
 
-    const {name,gender,tall,weight,saveFileName} = profile
+    const {name,gender,tall,weight,saveFileName,mbti} = profile
 
 
     useEffect(() => {
@@ -39,22 +40,23 @@ const Profile = ({onClose,id}) => {
     return (
 
         <div className='profileContainer'>
-            <h1>프로필 확인</h1>
-            <div className='profileBox'>
-                <div className='profileBox2'>
-                <img src={`http://localhost:8081/image/${saveFileName}`} alt={name} width={200} height={200} />
+            <h1>프로필 </h1>
+                <div className='profileBox'>
+                <div className='photo'>
+                <img src={`http://localhost:8081/image/${saveFileName}`} alt={name} />
+                </div>           
+                <div style={{border:"1px solid black",width:"300px", height:"250px",display: "flex",flexDirection: "column",alignItems:"flex-start",justifyContent:"center",paddingLeft:"20px"}}>
+                <p style={{margin:"7px"}}>이름: {name}</p>
+                <p style={{margin:"7px"}}>성별: {gender}</p>
+                <p style={{margin:"7px"}}>키: {tall}</p>
+                <p style={{margin:"7px"}}>몸무게: {weight}</p>
+                <p style={{margin:"7px"}}>MBTI: {mbti}</p>
                 </div>
-                <div profileBox3>
-                <p>이름:{name}</p>
-                <p>성별:{gender}</p>
-                <p>키:{tall}</p>
-                <p>몸무게:{weight}</p>
-                <button onClick={onClose}>닫기</button>
                 </div>
-        
-            </div>
+                <div style={{ display: "flex", justifyContent:"center",margin:"auto"}}>
+                <button onClick={onClose} style={{width:"100px",marginTop:"10px",borderRadius:"10px"}} >닫기</button>
+                </div>
         </div>
-
 
     )
 

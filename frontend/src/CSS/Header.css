@@ -46,3 +46,42 @@
 
 
 }
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    left: 50%;                      /* 왼쪽에서 50% 위치에 배치 */
+    transform: translateX(-50%);    /* 자신의 크기의 50%만큼 왼쪽으로 이동 */
+    background-color: #f9f9f9;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    width: auto;                    /* 내용에 맞춰 너비 조정 */
+    text-align: center;             /* 텍스트 중앙 정렬 */
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 0px 16px;
+    text-decoration: none;
+    display: block;                 /* 링크를 블록 요소로 설정 */
+    white-space: nowrap;            /* 텍스트가 줄바꿈 되지 않도록 설정 */
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+  
+
+  
+  .dropbtn {
+    background: none;
+    border: none;
+    color: black;
+    text-align: left;
+    text-decoration: none;
+  }

@@ -3,7 +3,7 @@
     border: 2px solid #ccdff9;
     margin: auto;
     width: 500PX;
-    height: 600px;
+    height: 630px;
     margin-top: 50px;
     border-radius: 20px;
 }
@@ -12,7 +12,64 @@
 .SignUpContainer h1{
 
     text-align: center;
+    margin: 0px;
+    margin-top: 15px;
 }
+
+.SignUpContainer .SignUpBox{
+
+ 
+    padding: 0px;
+    margin: 0px;
+}
+
+
+#message {
+
+    text-align: center;
+    color: red;
+    padding: 0px;
+    font-size: 13px;
+    margin-top: 10px;
+    height: 20px;
+    
+
+}
+
+
+.SignUpContainer input{
+
+
+    border: 2px solid #ccdff9;
+    border-radius: 5px ;
+
+ 
+}
+
+
+.SignUpContainer button{
+
+
+        background-color: #ffffff;
+        color: #000000;
+        border: 2px solid #ccdff9;
+        border-radius: 20px;
+        font-size: 10px;
+        cursor: pointer;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: all 0.4s ease;
+        width: 60px;
+        height: 25px;
+
+     
+
+}
+
+.SignUpContainer button:hover {
+    background-color: #5291e9;
+    color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
 
 .SignUpContainer p{
 
@@ -33,3 +90,29 @@
     margin-top: 20px;
 
 }
+
+
+.ButtonMove button{
+
+    margin: 5px;
+    background-color: #ffffff;
+    color: #000000;
+    border: 2px solid #ccdff9;
+    border-radius: 20px;
+    font-size: 10px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s ease;
+    width: 120px;
+    height: 30px;
+
+
+}
+
+
+
+.ButtonMove button:hover {
+    background-color: #5291e9;
+    color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }

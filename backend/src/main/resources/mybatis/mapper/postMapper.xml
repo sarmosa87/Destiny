@@ -12,7 +12,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </select>
 
       <select id="postList" parameterType="String" resultType="com.project.dto.PostDTO">
-        select a.*,b.name from post a, test b 
+        select a.*,b.name from post a, users b 
         where a.senderId = b.id
         and receiverId=#{receiverId}
 
@@ -20,13 +20,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
      <insert id="postInsert" parameterType="com.project.dto.PostDTO">
                 insert into post (postNum,senderId,receiverId,message,readCheck,postDate) values 
-                (#{postNum},#{senderId},#{receiverId},#{message},#{readCheck},sysdate)
+                (#{postNum},#{senderId},#{receiverId},#{message},#{readCheck},current_date)
     </insert>
     
     
     <select id="profile" parameterType="String" resultType="com.project.dto.UsersDTO">
         select *from users where id=#{id}
     </select>
+
+
+    <delete id="postRemove" parameterType="int">
+    
+        delete from post where postNum=#{postNum}
+    
+    </delete>
 
 </mapper>
 

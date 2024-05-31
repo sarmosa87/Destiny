@@ -15,4 +15,6 @@ public interface PostService {
 
     public UsersDTO profile(String id) throws Exception;
 
+    public void postRemove(int postNum) throws Exception;
+
 }

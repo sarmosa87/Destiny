@@ -67,3 +67,42 @@
 .chatting .chat .message.left small {
     margin-left: 10px; /* 왼쪽 메시지의 시간 */
 }
+
+
+  
+  .chatting input[type='text'] {
+    width: calc(100% - 22px);
+    padding: 10px;
+  }
+  
+  .chatting button {
+    padding: 5px 10px;
+    margin-right: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px; 
+    padding: 0;
+  }
+  
+  .chat {
+      max-height: 300px;
+      overflow-y: auto;
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-top: 10px;
+    }
+    
+    .chat p {
+      margin: 5px 0;
+    }
+    
+    .chat input[type="text"] {
+      width: calc(100% - 20px);
+      padding: 5px;
+      margin-top: 10px;
+    }
+    
+
+  

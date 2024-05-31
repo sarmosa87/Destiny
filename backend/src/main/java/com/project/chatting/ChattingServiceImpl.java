@@ -61,9 +61,9 @@ public class ChattingServiceImpl implements ChattingService {
     }
 
     @Override
-    public List<UsersDTO> ranList(String id) throws Exception {
+    public List<UsersDTO> findUser(String id) throws Exception {
         
-        return chattingMapper.ranList(id);
+        return chattingMapper.findUser(id);
     }
 
     @Override

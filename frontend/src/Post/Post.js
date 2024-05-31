@@ -3,7 +3,11 @@ import '../CSS/PostRecieve.css'
 import axios from 'axios';
 import PostRecieveItem from './PostRecieveItem';
 import ChattingItem from '../Chatting/ChattingItem';
-import Modal from '../Chatting/Modal';
+import ChattingModal from '../Chatting/ChattingModal';
+import { useNavigate } from 'react-router-dom';
+
+
+
 
 
 
@@ -17,7 +21,7 @@ const Post = ({onClose}) => {
     const [chattingLists,setChattingLists] = useState([])
     const [selectedUser, setSelectedUser] = useState(null);
     const user = JSON.parse(localStorage.getItem('user'));
-
+    const navigate = useNavigate();
 
   
     useEffect(() => {
@@ -26,11 +30,16 @@ const Post = ({onClose}) => {
             try {
                 const res = await axios.get(`http://localhost:8081/api/postList/${user.id}`);
                 setLists(res.data);
-                console.log('API Response:', res.data); // API 응답 확인
             } catch (error) {
                 console.log(error);
             }
         };
+        
+        fetchData();
+    }, [lists]);
+
+
+    useEffect(() => {
 
         const fetchData2 = async () => {
             try {
@@ -40,11 +49,47 @@ const Post = ({onClose}) => {
                 console.log(error);
             }
         };
-
-        
-        fetchData();
         fetchData2();
-    }, []);
+    }, [chattingLists]);
+
+
+    const postOut = () => {
+        navigate('/userList');
+    };
+
+
+    const onRemove = async (postNum) => {
+
+
+        const confirmDelete = window.confirm('삭제하시겠습니까?');
+        if (!confirmDelete) {
+        // 사용자가 '취소'를 선택한 경우, 함수 실행을 중단
+        return;
+        }
+
+
+        try {
+
+      
+            const res = await axios.post('http://localhost:8081/api/postRemove', {
+                postNum: postNum
+         
+            });
+
+            if (res.status === 200) {
+                alert('삭제가 완료됐습니다.');
+                setLists(current => current.filter(item => item.postNum !== postNum)); // 삭제된 게시물 제거
+            }
+ 
+        } catch (error) {
+            if (error.response && error.response.status === 409) {
+                alert('삭제할 정보가 없습니다.');
+            } else {
+                alert('서버 오류가 발생했습니다.');
+            }
+        }
+    };
+
 
     const postOpen = () => {
 
@@ -86,16 +131,18 @@ const Post = ({onClose}) => {
 
         {
     postShow && (
-        <div>
-            <div className='PostContainerList row'>
+        <div >
+            <div className='PostContainerList'>
                 <span className='w1'>보낸이</span>
                 <span className='w2'>내용</span>
                 <span className='w3'>보낸날짜</span>
                 <span className='w4'>기능</span>
             </div>
+            <div className='PostList'>
             {lists.map((item) => (
-                <PostRecieveItem key={item.postNum} item={item} />
+                <PostRecieveItem key={item.postNum} item={item} onRemove={onRemove}/>
             ))}
+            </div>
          
         </div>
     )
@@ -104,24 +151,39 @@ const Post = ({onClose}) => {
 { 
 chattingShow && (
 
-    <div className='wrab'>
+    <div className='postChatList'>
     <ul className='list'>
         {chattingLists.map((item) => (
             <ChattingItem key={item.CHATNUM} item={item} onItemClick={handleItemClick} /> // RanChatItem 사용
         ))}
     </ul>
-    {selectedUser && <Modal users={selectedUser} onClose={handleCloseModal} />}
+    {selectedUser && <ChattingModal users={selectedUser} onClose={handleCloseModal} />}
 </div>
 
 )
 
 }
 
+{
 
-    <div>
-                <button onClick={onClose}>닫기</button>
+!postShow && !chattingShow &&(
+
+    <div style={{marginTop:'225px'}}>
+
+
+
+    </div>
+
+)
+
+}
+
+    
+
+            <div className='PostButton'>
+                <button style={{marginTop:'5px'}} onClick={postOut} >닫기</button>
             </div>
-
+ 
         </div>
 
     );
